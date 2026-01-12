@@ -5,7 +5,7 @@
 # Jaguars 24 - 27 Bills
 #   0     1      2       3      4     5      6      7      8       9       10      11      12
 # email Rams Panthers Packers Bears Bills Jaguars 49ers Eagles Chargers Patriots Texans Steelers
-#        34     31       27    31    27     24     23     19
+#        34     31       27    31    27     24     23     19       3       16
 
 ARQUIVO_ENTRADA = "/home/mrobles/bolao_nfl_2026/palpites_wildcard.txt"
 DELIMITADOR = "|"
@@ -101,6 +101,16 @@ def processar_arquivo():
             )
 
             print(f"Jogo 4 - 49ers 23 x 19 Eagles. Usuario {campos[0]} fez { pontos } pontos. |49ers vs Eagles|{campos[0]}|{pontos}")
+
+            # Chargers x Patriots
+            pontos = verifica_resultado(
+                campos[10], #vencedor Patriots
+                campos[9], #perdedor Chargers
+                16,
+                3
+            )
+
+            print(f"Jogo 5 - Chargers 3 x 16 Patriots. Usuario {campos[0]} fez { pontos } pontos. |Chargers vs Patriots|{campos[0]}|{pontos}")
 
 if __name__ == "__main__":
     processar_arquivo()
