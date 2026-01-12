@@ -3,9 +3,9 @@
 # Bears 31 - 27 Packers
 # Panthers 31 - 34 Rams
 # Jaguars 24 - 27 Bills
-#   1    2       3       4      5     6      7      8     9       10       11      12      13
+#   0     1      2       3      4     5      6      7      8       9       10      11      12
 # email Rams Panthers Packers Bears Bills Jaguars 49ers Eagles Chargers Patriots Texans Steelers
-#        34     31       27    31    27     24
+#        34     31       27    31    27     24     23     19
 
 ARQUIVO_ENTRADA = "/home/mrobles/bolao_nfl_2026/palpites_wildcard.txt"
 DELIMITADOR = "|"
@@ -33,7 +33,12 @@ def verifica_resultado(palpite_vencedor, palpite_perdedor, vencedor, perdedor):
             pontos = pontos + 10 
         
         #verifica se acertou diferença
-        if palpite_vencedor - palpite_perdedor == vencedor - perdedor:
+        if palpite_vencedor > palpite_perdedor:
+            palpite_diferenca = palpite_vencedor - palpite_perdedor
+        else:
+            palpite_diferenca = palpite_perdedor - palpite_vencedor
+
+        if palpite_diferenca == vencedor - perdedor:
             pontos = pontos + 5
 
         #verifica se acertou placar do vencedor
@@ -86,6 +91,16 @@ def processar_arquivo():
             )   
             
             print(f"Jogo 3 - Bills 27 x 24 Jaguarss. Usuario {campos[0]} fez { pontos } pontos. |Bills vs Jaguars|{campos[0]}|{pontos}")
+
+            # 49ers x Eagles
+            pontos = verifica_resultado(
+                campos[7], #vencedor 49ers
+                campos[8], #perdedor Eagles
+                23,
+                19
+            )
+
+            print(f"Jogo 4 - 49ers 23 x 19 Eagles. Usuario {campos[0]} fez { pontos } pontos. |49ers vs Eagles|{campos[0]}|{pontos}")
 
 if __name__ == "__main__":
     processar_arquivo()
