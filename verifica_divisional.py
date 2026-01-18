@@ -2,7 +2,7 @@
 
 #   0      1      2      3       4       5      6      7    8
 # Email  Bills Broncos 49ers Seahawks Texans Patriots Rams Bears
-#         30     33
+#         30     33      6      41
 
 ARQUIVO_ENTRADA = "/home/mrobles/bolao_nfl_2026/palpites_divisional.txt"
 DELIMITADOR = "|"
@@ -60,7 +60,7 @@ def processar_arquivo():
 
             campos = linha.split(DELIMITADOR)
 
-            # Rams x Panthers
+            # Bills vs Broncos
             pontos = verifica_resultado(
                 campos[2], #vencedor Broncos
                 campos[1], #perdedor Bills
@@ -69,6 +69,17 @@ def processar_arquivo():
             )
 
             print(f"Jogo 1 - Bills 30 x 33 Broncos. Usuario {campos[0]} fez { pontos } pontos. |Bills vs Broncos|{campos[0]}|{pontos}") 
+
+            # 49ers vs Seahawks
+            pontos = verifica_resultado(
+                campos[4], #vencedor Seahawks
+                campos[3], #perdedor 49ers
+                41,
+                6
+            )
+
+            print(f"Jogo 2 - 49ers 6 x 41 Seahawks. Usuario {campos[0]} fez { pontos } pontos. |49ers vs Seahawks|{campos[0]}|{pontos}")
+
 
 if __name__ == "__main__":
     processar_arquivo()
